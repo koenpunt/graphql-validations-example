@@ -1,0 +1,45 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    foo: ID
+}
+
+type Mutation {
+    createCustomerDetails(input: CustomerDetailsInput): CreateCustomerDetailsPayload
+}
+
+type CreateCustomerDetailsPayload {
+    id: ID!
+}
+
+"Customer details provided for example at checkout."
+input CustomerDetailsInput {
+    "The email address of the customer."
+    email: String!
+    "The name of the customer."
+    name: String!
+    "The phone number of the customer."
+    phoneNumber: String
+    "The locale of the customer."
+    locale: String
+    "The delivery details of the customer."
+    deliveryDetails: DeliveryDetailsInput
+}
+
+
+"Delivery information."
+input DeliveryDetailsInput {
+    "The city part of the delivery address."
+    city: String
+    "The ISO 3166-1 country code part of the delivery address."
+    countryCode: String
+    "The postal code part of the delivery address."
+    postalCode: String
+    "Street and house number part of the delivery address."
+    streetAddress: String
+    "Optional additional relevant info belonging to the address. For example '4th floor', or 'grey door on the left'."
+    additionalDescription: String
+}
